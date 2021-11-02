@@ -4,8 +4,9 @@ pragma solidity >=0.6.6;
 import "./aave/FlashLoanReceiverBase.sol";
 import "./aave/ILendingPoolAddressesProvider.sol";
 import "./aave/ILendingPool.sol";
+import "./compound/Borrower.sol";
 
-contract Flashloan is FlashLoanReceiverBase {
+contract Flashloan is FlashLoanReceiverBase, Borrower {
 
     constructor(address _addressProvider) FlashLoanReceiverBase(_addressProvider) public {}
 
@@ -32,7 +33,7 @@ contract Flashloan is FlashLoanReceiverBase {
 
         
         //Collateralise p1 and borrow ERC20
-
+        borrowFunds(cETH_Address, comptrollerAddress, priceOracle, cWBTC_Address, p1);
         //Use p2 to short ETH with 5x margin against ERC20
         //Convert ERC20 back to ETH
         //Repay flash loan
