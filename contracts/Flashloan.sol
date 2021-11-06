@@ -6,7 +6,7 @@ import "./aave/ILendingPoolAddressesProvider.sol";
 import "./aave/ILendingPool.sol";
 import "./compound/Borrower.sol";
 
-contract Flashloan is FlashLoanReceiverBase, Borrower {
+contract Flashloan is FlashLoanReceiverBase, Borrower, Hydro {
 
     constructor(address _addressProvider) FlashLoanReceiverBase(_addressProvider) public {}
 
